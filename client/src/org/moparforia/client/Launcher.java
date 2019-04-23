@@ -327,6 +327,7 @@ public class Launcher extends JFrame {
     public Launcher() {
         gaemz = new TreeMap<String, Game>();
         gaemz.put("AGolf", new Game("localhost", 4242, 735, 525));
+        //gaemz.put("AGolf", new Game("192.168.1.23", 4242, 735, 525));
 
         serverBox = new JCheckBox();
         serverBox.setSelected(true);
@@ -384,6 +385,7 @@ public class Launcher extends JFrame {
                 params.put("server", "game05.playforia.net" + ":" + g.port);
             }
             params.put("server", "127.0.0.1:" + g.port);
+            //params.put("server", "192.168.1.23:" + g.port);
 
             params.put("locale", "en");
             params.put("lang", "en_US");

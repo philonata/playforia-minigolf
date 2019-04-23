@@ -12,6 +12,7 @@ import javax.swing.JApplet;
 public final class Parameters {
 
     private static final String aString1879 = "127.0.0.1";
+    //private static final String aString1879 = "192.168.1.23";
     private static final String aString1880 = "en";
     private static final String aString1881 = "playforia";
     private static final String aString1882 = "http://www.playforia.com/";

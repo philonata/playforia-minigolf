@@ -12,6 +12,7 @@ import java.util.StringTokenizer;
 public final class Parameters {
 
     private static final String aString1416 = "127.0.0.1";
+    //private static final String aString1416 = "192.168.1.23";
     private static final String aString1417 = "en";
     private static final String aString1418 = "playforia";
     private static final String aString1419 = "http://www.playforia.com/";
