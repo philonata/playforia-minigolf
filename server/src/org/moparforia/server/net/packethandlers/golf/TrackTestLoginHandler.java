@@ -42,7 +42,7 @@ public class TrackTestLoginHandler implements PacketHandler {
         String password = message.group(2);
         //todo load player from db?
 
-        boolean anonym = !Database.getInstance().authenticateUser(username,password);
+        boolean anonym = true; //!Database.getInstance().authenticateUser(username,password);
         if (anonym) {
             username = "~anonym-" + (int) (Math.random() * 10000);
         }

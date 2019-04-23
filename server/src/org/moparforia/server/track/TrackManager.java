@@ -48,19 +48,19 @@ public class TrackManager {
     }
 
 
-    private static final void loadTracks() {
-        Datastore ds = Database.getInstance().getDatastore();
-        ArrayList<Track> list = (ArrayList<Track>) ds.find(Track.class).asList();
-        tracks.addAll(list);
-        System.out.println("Loaded "+tracks.size()+" tracks.");
-    }
+    //private static final void loadTracks() {
+        //Datastore ds = Database.getInstance().getDatastore();
+        //ArrayList<Track> list = (ArrayList<Track>) ds.find(Track.class).asList();
+        //tracks.addAll(list);
+    //    System.out.println("Loaded "+tracks.size()+" tracks.");
+    //}
 
     public static void addStrokes(Track track, int numPlayers, int strokes) {
         tracks.get(tracks.indexOf(track)).addStrokes(numPlayers, strokes);
     }
 
     public static void save(Track track) {
-        Database.getInstance().getDatastore().save(track);
+        //Database.getInstance().getDatastore().save(track);
     }
 
     public static void updateStats(Track track, Player player, int par, boolean newRecord) {
@@ -76,9 +76,9 @@ public class TrackManager {
 
     }
 
-/*    private static final void loadTracks() throws IOException {
+    private static final void loadTracks() throws IOException {
         // only problem i can think of is that this will overwrite maps with the same name in a type
-        tracks = new ArrayList<TrackRef>();
+        tracks = new ArrayList<Track>(); // tracks = new ArrayList<TrackRef>();
         FileSystem fs = FileSystems.getDefault();
         int counter = 0;
         for (TrackCategory type : TrackCategory.values()) {
@@ -133,11 +133,11 @@ public class TrackManager {
                 }
                 String filename = filePath.getFileName().toString();
                 filename = filename.substring(0, filename.lastIndexOf('.'));
-                tracks.add(new TrackRef(filename, type, new Track(name, author, data, type.getId(), scoreInfo, bestPlayers, bestTimes, ratings), getTrackInfo(filename)));
+                tracks.add(new Track(name,author,data,type.getId(),scoreInfo,bestPlayers,bestTimes,ratings));
             }
         }
         System.out.println("Loaded " + tracks.size() + " tracks");
-    }*/
+    }
 
     private static final void loadTrackSets() throws IOException {
         if (tracks == null) {
