@@ -1,16 +1,21 @@
 # Minigolf Server/Client/Editor (Plaforia)
 
+## Screenshot
+
+![Original Playforia Minigolf Main Menu](screenshot.png)
+
 ## Context
 
 Playforia.net was an online game community created by Finnish game studio Playforia Inc. in 2002. As of the end of 2018, Playforia announced to close its web presence on January 7th, 2019. (Wikipedia: https://en.wikipedia.org/wiki/Playforia)
-
+i
 The Java Applet-based Minigolf Client was one of the most popular multiplayer games on the platform. When I found a partially working codebase for parts of the Playforia related Java-Projects on GitHub (https://github.com/WorldStarHipHopX/playforia) I got it running on my computer by implementing a few small changes, which are explained below.
 
 ## Features
 
 ### Original game
-- ??? Maps in ?? Categories
+- 3718 Maps in 8 Categories
 - Up to 4 players or Single Player mode
+- Graphics quality options
 - ...
 
 ### Reimplementation
@@ -45,8 +50,11 @@ Assuming that all 3 tools have compiled sucessfully, you have 3 possible ways fo
 The client can be started the same way (AFTER THE SERVER WAS STARTED) but in the case the server is not hosted on the same computer, you can pass the server IP like this while launching the client application:
 
 ```bash
-java -jar 192.168.1.7 # Replace IP with the one of your server
+java -jar 192.168.1.7 # Replace IP with the one of your server (which you can find out by f,e. `ifconfig`/`ipconfig`)
 ```
+
+After the Login screen, which can be skipped with an empty form, you should see your familiar Playforia Minigolf Menu!
+
 
 Running the Editor is quite straightforward as it can be started like 
 
@@ -55,6 +63,7 @@ Running the Editor is quite straightforward as it can be started like
 Tested:
 - MacOS 10.14.5 Mojave with Java Version `1.8.0_152-ea` with JDK
 - Raspbian Strech with Java version ??
+
 Untested: (Will likely be compatible, too!)
 - Windows
 - Ubuntu
