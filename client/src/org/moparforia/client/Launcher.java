@@ -68,7 +68,15 @@ public class Launcher extends JFrame {
             System.out.println(m.group(i));
         */
 
-        instance = new Launcher();
+        String server;
+        if (args.length > 0) {
+            server = args[0];
+        } else {
+            //server = "localhost";
+            server = "127.0.0.1";
+        }
+
+        instance = new Launcher(server);
     }
 
     static class ConnCipher {
@@ -324,10 +332,9 @@ public class Launcher extends JFrame {
         }
     }
 
-    public Launcher() {
+    public Launcher(String server) {
         gaemz = new TreeMap<String, Game>();
-        gaemz.put("AGolf", new Game("localhost", 4242, 735, 525));
-        //gaemz.put("AGolf", new Game("192.168.1.23", 4242, 735, 525));
+        gaemz.put("AGolf", new Game(server, 4242, 735, 525));
 
         serverBox = new JCheckBox();
         serverBox.setSelected(true);
@@ -335,7 +342,7 @@ public class Launcher extends JFrame {
             game = new AGolf();
 
 
-        game.setStub(new Stub());
+        game.setStub(new Stub(server));
         game.setSize(gaemz.get(selectedGame).width, gaemz.get(selectedGame).height);
         game.init();
         game.start();
@@ -373,7 +380,7 @@ public class Launcher extends JFrame {
     class Stub implements AppletStub {
         private Map<String, String> params;
 
-        public Stub() {
+        public Stub(String server) {
             Game g = gaemz.get(selectedGame);
             params = new HashMap<String, String>();
             params.put("initmessage", "Loading game...");
@@ -384,7 +391,7 @@ public class Launcher extends JFrame {
             } else {
                 params.put("server", "game05.playforia.net" + ":" + g.port);
             }
-            params.put("server", "127.0.0.1:" + g.port);
+            params.put("server", server + ":" + g.port);
             //params.put("server", "192.168.1.23:" + g.port);
 
             params.put("locale", "en");
