@@ -24,7 +24,7 @@
             </jar>
         </target>
 
-        <target name="run">
+        <target name="run" depends="compile">
                 <java classname="org.moparforia.client.Launcher" fork="true">
                         <jvmarg value="-Xms128m" />
                         <jvmarg value="-Xmx512m" />
