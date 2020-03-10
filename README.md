@@ -22,7 +22,7 @@ The Java Applet-based Minigolf Client was one of the most popular multiplayer ga
 - Commented out any communication with original Playforia.net servers
 - Use local Map store instead of database
 - Added ability to pass IP of server to client
-- Ability to play on on a single computerr and hosting a game for up to 4 players in your home network
+- Ability to play on on a single computer and hosting a game for up to 4 players in your home network
 
 ## Usage
 
@@ -50,7 +50,7 @@ Assuming that all 3 tools have compiled sucessfully, you have 3 possible ways fo
 The client can be started the same way (AFTER THE SERVER WAS STARTED) but in the case the server is not hosted on the same computer, you can pass the server IP like this while launching the client application:
 
 ```bash
-java -jar 192.168.1.7 # Replace IP with the one of your server (which you can find out by f,e. `ifconfig`/`ipconfig`)
+java -jar client.jar 192.168.1.7 # Replace IP with the one of your server (which you can find out by f,e. `ifconfig`/`ipconfig`)
 ```
 
 After the Login screen, which can be skipped with an empty form, you should see your familiar Playforia Minigolf Menu!
@@ -62,7 +62,7 @@ Running the Editor is quite straightforward as it can be started like
 
 Tested:
 - MacOS 10.14.5 Mojave with Java Version `1.8.0_152-ea` with JDK
-- Raspbian Strech with Java version ??
+- Raspbian Strech (9) with Java version 1.8.0\_65
 
 Untested: (Will likely be compatible, too!)
 - Windows
@@ -86,4 +86,4 @@ Untested: (Will likely be compatible, too!)
 
 Have fun.
 
-If you miss the good old times before Playforia.net went down, Minigolf probably was one of your favourite games. I hope you will have som fun in the single player or with some friends with this  little crappy piece of oldschool software!
+If you miss the good old times before Playforia.net went down, Minigolf probably was one of your favourite games. I hope you will have some fun in the single player or with friends with this  little crappy piece of oldschool software!
