@@ -204,7 +204,7 @@ public abstract class GolfGame extends Game {
         }
 
         Track track = tracks.get(currentTrack);
-        if (track.getFirstBestPlayer().equals("") || track.getBestPar() > getLeadingPar()) { // first ever record OR beat previous
+        if ("".equals(track.getFirstBestPlayer()) || track.getBestPar() > getLeadingPar()) { // first ever record OR beat previous
             TrackManager.updateStats(track, getLeadingPlayer(), getLeadingPar(), true);
             return true;
         } else if (track.getBestPar() == getLeadingPar()) { // matched par, latest
