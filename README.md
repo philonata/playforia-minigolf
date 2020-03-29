@@ -7,7 +7,8 @@
 ## Context
 
 Playforia.net was an online game community created by Finnish game studio Playforia Inc. in 2002. As of the end of 2018, Playforia announced to close its web presence on January 7th, 2019. (Wikipedia: https://en.wikipedia.org/wiki/Playforia)
-i
+The gaming platform was also formerly known as Aapeli or Playray.
+
 The Java Applet-based Minigolf Client was one of the most popular multiplayer games on the platform. When I found a partially working codebase for parts of the Playforia related Java-Projects on GitHub (https://github.com/WorldStarHipHopX/playforia) I got it running on my computer by implementing a few small changes, which are explained below.
 
 ## Features
@@ -81,6 +82,7 @@ Untested: (Will likely be compatible, too!)
 2. I am not responsible for any bug, problems, security flaws,...
 3. Also, I do not intent to extend the current codebase very much
 4. The Java code you will find in the repository is pretty bad. Some parts even look like they where generated, for example by an converter tool
+5. There is actually an aimbot implemented in the client code. Look for `allowCheating` in `GameCanvas.java` for trying it out. Use it wisely.
 
 ## Final Words
 
