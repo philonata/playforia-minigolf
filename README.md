@@ -64,9 +64,9 @@ Running the Editor is quite straightforward as it can be started like
 Tested:
 - MacOS 10.14.5 Mojave with Java Version `1.8.0_152-ea` with JDK
 - Raspbian Strech (9) with Java version 1.8.0\_65
+- Windows (7/8/10)
 
 Untested: (Will likely be compatible, too!)
-- Windows
 - Ubuntu
 - ...
 
