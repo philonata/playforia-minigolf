@@ -84,6 +84,17 @@ Untested: (Will likely be compatible, too!)
 4. The Java code you will find in the repository is pretty bad. Some parts even look like they where generated, for example by an converter tool
 5. There is actually an aimbot implemented in the client code. Look for `allowCheating` in `GameCanvas.java` for trying it out. Use it wisely.
 
+---
+
+<a href="https://www.buymeacoff.ee/PhilippvK" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/lato-green.png" alt="Buy Me A Coffee" style="height: 11px !important;" ></a>
+
+---
+
+# Contributing
+
+Please remove all references to sponsoring links from the Readme and update the contents of the `.github` directory to your personal preferences when forking this repository for personal experiments or contributions.
+Any support in form of Bug Reports, Feature Requests, PRs,... is greatly appreciated.
+
 ## Final Words
 
 Have fun.
