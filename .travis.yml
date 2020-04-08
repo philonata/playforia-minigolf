@@ -15,13 +15,14 @@ jobs:
   include:
     - stage: compile
       name: "Client"
-      script: "java -version ; cd client ; ant compile"
+      script: "cd client ; ant compile"
     - name: "Server"
       script: "cd server ; ant compile"
     - name: "Editor"
       script: "cd editor ; ant compile"
     - stage: release
       deploy:
+        script: "date"
         provider: releases
         api_key: $GitHub_Token
         file:
