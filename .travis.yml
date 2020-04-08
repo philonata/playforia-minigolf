@@ -1,0 +1,28 @@
+language: java
+sudo: false
+
+before_deploy:
+  - zip -r tracks.zip tracks/*
+	- cd client ; ant compile ; cd ..
+	- cd server ; ant compile ; cd ..
+	- cd editor ; ant compile ; cd ..
+
+jobs:
+  include:
+    - stage: compile
+      name: "Client"
+      script: cd client ; ant compile
+    - name: "Server"
+		  script: cd server ; ant compile
+	  - stage: release
+			deploy:
+				provider: releases
+				api_key: $GitHub_Token
+				file:
+					- "server/server.jar"
+					- "client/client.jar"
+					- "editor/editor.jar"
+					- "tracks.zip"
+				skip_cleanup: true
+				on:
+					tags: true
