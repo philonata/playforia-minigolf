@@ -2,6 +2,9 @@
 language: java
 sudo: false
 
+jdk:
+  - oraclejdk8
+
 before_deploy:
   - "zip -r tracks.zip tracks/*"
   - "cd client ; ant compile ; cd .."
