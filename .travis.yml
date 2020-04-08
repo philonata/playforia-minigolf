@@ -1,9 +1,12 @@
 ---
 language: java
-sudo: false
+os: linux
+dist: xenial
 
 jdk:
   - openjdk8
+
+script: "date"
 
 before_deploy:
   - "zip -r tracks.zip tracks/*"
@@ -22,7 +25,6 @@ jobs:
       script: "cd editor ; ant compile"
     - stage: release
       deploy:
-        script: "date"
         provider: releases
         api_key: $GitHub_Token
         file:
