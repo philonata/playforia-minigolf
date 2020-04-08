@@ -12,7 +12,7 @@ jobs:
   include:
     - stage: compile
       name: "Client"
-      script: "cd client ; ant compile"
+      script: "java -version ; cd client ; ant compile"
     - name: "Server"
       script: "cd server ; ant compile"
     - name: "Editor"
