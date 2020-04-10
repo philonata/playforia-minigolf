@@ -90,7 +90,7 @@ Untested: (Will likely be compatible, too!)
 
 ---
 
-# Contributing
+## Contributing
 
 Please remove all references to sponsoring links from the Readme and update the contents of the `.github` directory to your personal preferences when forking this repository for personal experiments or contributions.
 Any support in form of Bug Reports, Feature Requests, PRs,... is greatly appreciated.
