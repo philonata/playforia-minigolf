@@ -6,11 +6,9 @@ dist: xenial
 jdk:
   - openjdk8
 
-script:
+before_deploy:
   - "export TITLE=testtitle"
   - "export BODY=testbody"
-
-before_deploy:
   - "zip -r tracks.zip tracks/*"
   - "cd client ; ant compile ; cd .."
   - "cd server ; ant compile ; cd .."
