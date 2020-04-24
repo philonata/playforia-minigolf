@@ -6,6 +6,9 @@ dist: xenial
 jdk:
   - openjdk8
 
+script:
+  - :
+
 before_deploy:
   - "export TITLE=testtitle"
   - "export BODY=testbody"
