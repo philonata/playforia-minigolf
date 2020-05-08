@@ -67,16 +67,30 @@ public class Launcher extends JFrame {
         for(int i = 1; i < m.groupCount(); i++)
             System.out.println(m.group(i));
         */
-
-        String server;
-        if (args.length > 0) {
-            server = args[0];
-        } else {
-            //server = "localhost";
-            server = "127.0.0.1";
-        }
-
-        instance = new Launcher(server);
+		
+			//easily editable optional client launch options, at the moment supports custom server ip and language pack
+			//example: client.jar -server 125.456.789.123 -lang en_US
+			
+			String server = "127.0.0.1"; //dafault server ip
+			String lang = "en_US"; //dafault language package (comes with en_US, fi_FI and sv_SE)
+			
+			if(args.length==1){ //support for "legacy" .bats where only ip provided after jar
+				server=args[0];
+			}
+			
+			for(int i = 0;i<args.length ; i++)
+			{
+				if(args[i].equals("-server")){
+					server = args[i+1]; //grabs the next string after -server
+				}
+				if(args[i].equals("-lang")){
+					lang = args[i+1]; //grabs the next string after -lang
+				}
+			}
+			System.out.println(server);
+			System.out.println(lang);
+			
+        instance = new Launcher(server,lang); //now provides language pack too
     }
 
     static class ConnCipher {
@@ -332,7 +346,7 @@ public class Launcher extends JFrame {
         }
     }
 
-    public Launcher(String server) {
+    public Launcher(String server, String lang) {
         gaemz = new TreeMap<String, Game>();
         gaemz.put("AGolf", new Game(server, 4242, 735, 525));
 
@@ -342,7 +356,7 @@ public class Launcher extends JFrame {
             game = new AGolf();
 
 
-        game.setStub(new Stub(server));
+        game.setStub(new Stub(server,lang));
         game.setSize(gaemz.get(selectedGame).width, gaemz.get(selectedGame).height);
         game.init();
         game.start();
@@ -380,7 +394,7 @@ public class Launcher extends JFrame {
     class Stub implements AppletStub {
         private Map<String, String> params;
 
-        public Stub(String server) {
+        public Stub(String server,String lang) {
             Game g = gaemz.get(selectedGame);
             params = new HashMap<String, String>();
             params.put("initmessage", "Loading game...");
@@ -394,8 +408,11 @@ public class Launcher extends JFrame {
             params.put("server", server + ":" + g.port);
             //params.put("server", "192.168.1.23:" + g.port);
 
-            params.put("locale", "en");
-            params.put("lang", "en_US");
+            //params.put("locale", "en");
+            //params.put("lang", en_US);
+
+            params.put("locale", lang.substring(0,2)); //use first part of en_US, fi_FI or sv_SE
+            params.put("lang", lang);
             params.put("sitename", "playray");
             params.put("quitpage", "http://www.playforia.com/games/");
             params.put("regremindshowtime", "3,8,15,25,50,100,1000");

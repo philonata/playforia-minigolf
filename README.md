@@ -1,4 +1,4 @@
-# Minigolf Server/Client/Editor (Plaforia) [![Build Status](https://travis-ci.org/PhilippvK/playforia-minigolf.svg?branch=master)](https://travis-ci.org/PhilippvK/playforia-minigolf)
+# Minigolf Server/Client/Editor (Playforia) [![Build Status](https://travis-ci.org/PhilippvK/playforia-minigolf.svg?branch=master)](https://travis-ci.org/PhilippvK/playforia-minigolf)
 
 ## Screenshot
 
@@ -54,10 +54,10 @@ Assuming that all 3 tools have compiled sucessfully (or downloaded them them fro
 2. Using the Ant tool: Run `ant run` in the `./server` directory
 3. Use the exported JAR file: `java -jar server.jar`
 
-The client can be started the same way (AFTER THE SERVER WAS STARTED) but in the case the server is not hosted on the same computer, you can pass the server IP like this while launching the client application:
+The client can be started the same way (AFTER THE SERVER WAS STARTED) but you can also give launch options for server ip and game language in the following format
 
 ```bash
-java -jar client.jar 192.168.1.7 # Replace IP with the one of your server (which you can find out by f,e. `ifconfig`/`ipconfig`)
+java -jar client.jar -server 192.168.1.7 -lang en_US # Replace IP with the one of your server (which you can find out by f,e. `ifconfig`/`ipconfig`) and lang with en_US, fi_FI or sv_SE
 ```
 
 After the Login screen, which can be skipped with an empty form, you should see your familiar Playforia Minigolf Menu!
@@ -78,8 +78,6 @@ Untested: (Will likely be compatible, too!)
 - ...
 
 ## Problems
-- BadWordFilter is disabled because of character encoding issue
-- You can not choose a custom username
 - Passwords and logins are ignored
 - Ratings are not synced
 
@@ -92,15 +90,6 @@ Untested: (Will likely be compatible, too!)
 5. There is actually an aimbot implemented in the client code. Look for `allowCheating` in `GameCanvas.java` for trying it out. Use it wisely.
 
 ---
-
-<a href="https://www.buymeacoff.ee/PhilippvK" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/lato-green.png" alt="Buy Me A Coffee" style="height: 11px !important;" ></a>
-
----
-
-## Contributing
-
-Please remove all references to sponsoring links from the Readme and update the contents of the `.github` directory to your personal preferences when forking this repository for personal experiments or contributions.
-Any support in form of Bug Reports, Feature Requests, PRs,... is greatly appreciated.
 
 ## Final Words
 
