@@ -408,7 +408,10 @@ public class Launcher extends JFrame {
             params.put("server", server + ":" + g.port);
             //params.put("server", "192.168.1.23:" + g.port);
 
-            params.put("locale", "en");
+            //params.put("locale", "en");
+            //params.put("lang", en_US);
+
+            params.put("locale", lang.substring(0,2)); //use first part of en_US, fi_FI or sv_SE
             params.put("lang", lang);
             params.put("sitename", "playray");
             params.put("quitpage", "http://www.playforia.com/games/");
