@@ -78,17 +78,14 @@ public class Launcher extends JFrame {
 				server=args[0];
 			}
 			
-			for(int i = 0;i<args.length ; i++)
-			{
-				if(args[i].equals("-server")){
+			for(int i = 0;i<args.length ; i++){
+				if(args[i].equals("-server") && args.length>i+1){//finds -server launch option and checks that there is actually something after it
 					server = args[i+1]; //grabs the next string after -server
 				}
-				if(args[i].equals("-lang")){
+				if(args[i].equals("-lang") && args.length>i+1){//finds -lang launch option and checks that there is actually something after it
 					lang = args[i+1]; //grabs the next string after -lang
 				}
 			}
-			System.out.println(server);
-			System.out.println(lang);
 			
         instance = new Launcher(server,lang); //now provides language pack too
     }
