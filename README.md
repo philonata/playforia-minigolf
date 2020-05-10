@@ -57,7 +57,7 @@ Assuming that all 3 tools have compiled sucessfully (or downloaded them them fro
 The client can be started the same way (AFTER THE SERVER WAS STARTED) but you can also give launch options for server ip and game language in the following format
 
 ```bash
-java -jar client.jar -server 192.168.1.7 -lang en_US # Replace IP with the one of your server (which you can find out by f,e. `ifconfig`/`ipconfig`) and lang with en_US, fi_FI or sv_SE
+java -jar client.jar -server 192.168.1.7 -lang en_US # Replace IP with the one of your server (which you can find out by using for example `ifconfig`/`ipconfig`) and lang with en_US, fi_FI or sv_SE
 ```
 
 After the Login screen, which can be skipped with an empty form, you should see your familiar Playforia Minigolf Menu!
