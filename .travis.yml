@@ -6,8 +6,7 @@ dist: xenial
 jdk:
   - openjdk8
 
-script:
-  - :
+script: "date"
 
 before_deploy:
   - "export TITLE=testtitle"
@@ -30,8 +29,8 @@ jobs:
       deploy:
         provider: releases
         api_key: $GitHub_Token
-        title: ${TITLE}
-        body: ${BODY}
+        #title: ${TITLE}
+        #body: ${BODY}
         file:
           - "server/server.jar"
           - "client/client.jar"
