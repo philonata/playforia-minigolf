@@ -48,7 +48,7 @@ Choose your prefered toolchain:
 ### Running
 
 First, the server application has to be started as it provides ressources like sounds, maps and textures which are required for "offline" modes, too.
-As I cound not manage to include the tracks inside the compiled JAR archive, the `tracks` directory has to be located at the same folder where the `server.jar` is located!
+As I cound not manage to include the tracks inside the compiled JAR archive, the `tracks` directory has to be located at the same folder where the `server.jar` is located! There is a symbolic link in the `server/` directory which will likely not work on Windows systems. Please remove it and copy the directory instead!
 Assuming that all 3 tools have compiled sucessfully (or downloaded them them from the [Releases Page](https://github.com/PhilippvK/playforia-minigolf/releases)), you have 3 possible ways for running the server binary:
 1. Using the IntelliJ IDE: Use the provides build artifacts or run the server by pressing the play button after compiling
 2. Using the Ant tool: Run `ant run` in the `./server` directory
