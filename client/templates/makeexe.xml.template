@@ -4,14 +4,14 @@
   <outfile>@APP_NAME@-@VERSION@.exe</outfile>
   <jar>@JAR_NAME@</jar>
   <errTitle></errTitle>
-  <cmdLine></cmdLine>
+  <cmdLine>-lang en_US -server 35.209.2.60</cmdLine>
   <chdir></chdir>
   <priority>normal</priority>
   <downloadUrl>http://java.com/download</downloadUrl>
   <customProcName>false</customProcName>
   <stayAlive>false</stayAlive>
-  <manifest></manifest>  
-  <icon>res/icons/appicon.ico</icon>
+  <manifest></manifest>
+  <icon>res/icons/playforia.ico</icon>
   <jre>
     <path>jre</path>
     <minVersion></minVersion>
