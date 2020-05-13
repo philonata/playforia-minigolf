@@ -16,7 +16,6 @@ jdk:
 script: "date"
 
 before_install:
-  - cd client
   - wget http://files.jrsoftware.org/is/5/innosetup-5.6.1.exe
   - wineboot --update
   - Xvfb :0 -screen 0 1024x768x16 &
