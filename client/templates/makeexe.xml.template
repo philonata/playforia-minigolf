@@ -1,0 +1,35 @@
+<launch4jConfig>
+  <dontWrapJar>false</dontWrapJar>
+  <headerType>gui</headerType>
+  <outfile>@APP_NAME@-@VERSION@.exe</outfile>
+  <jar>@JAR_NAME@</jar>
+  <errTitle></errTitle>
+  <cmdLine>-lang en_US -server 35.209.2.60</cmdLine>
+  <chdir></chdir>
+  <priority>normal</priority>
+  <downloadUrl>http://java.com/download</downloadUrl>
+  <customProcName>false</customProcName>
+  <stayAlive>false</stayAlive>
+  <manifest></manifest>
+  <icon>res/icons/playforia.ico</icon>
+  <jre>
+    <path>jre</path>
+    <minVersion></minVersion>
+    <maxVersion></maxVersion>
+    <jdkPreference>preferJre</jdkPreference>
+    <initialHeapSize>0</initialHeapSize>
+    <maxHeapSize>512</maxHeapSize>
+  </jre>
+  <versionInfo>
+    <fileVersion>@VERSION@</fileVersion>
+    <txtFileVersion>v.@VERSION@</txtFileVersion>
+    <fileDescription>Software for Content Analysis</fileDescription>
+    <copyright>Will Lowe 2006-2012 (GPL license)</copyright>
+    <productVersion>@VERSION@</productVersion>
+    <txtProductVersion>@APP_NAME@</txtProductVersion>
+    <productName>@APP_NAME@</productName>
+    <companyName></companyName>
+    <internalName>@APP_NAME@-@VERSION@</internalName>
+    <originalFilename>@APP_NAME@-@VERSION@.exe</originalFilename>
+  </versionInfo>
+</launch4jConfig>
