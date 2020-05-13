@@ -10,6 +10,7 @@ addons:
     packages:
     - wine
     - xvfb
+    - hfsutils
     - hfsprogs
 
 jdk:

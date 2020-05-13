@@ -6,4 +6,4 @@ mkdir -p ./tmp
 sudo mount minigolf_setup.dmg ./tmp/
 sudo cp -r Client.app/ ./tmp/Client.app
 sudo umount ./tmp
-rm tmp
+rm -r tmp
