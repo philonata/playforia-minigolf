@@ -22,10 +22,10 @@ DefaultDirName={pf}\{#MyAppName}
 DisableProgramGroupPage=yes
 ; Remove the following line to run in administrative install mode (install for all users.)
 PrivilegesRequired=lowest
-OutputDir=Z:\
+;OutputDir=Z:\
 ;OutputBaseFilename="minigolf-installer-{#MyAppVersion}"
 OutputBaseFilename=setup64
-SetupIconFile=Z:\playforia.ico
+SetupIconFile=res/icons/playforia.ico
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
