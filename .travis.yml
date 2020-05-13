@@ -3,13 +3,14 @@ language: java
 os: linux
 dist: xenial
 install: true
-#sudo: required
+sudo: required
 
 addons:
   apt:
     packages:
     - wine
     - xvfb
+    - hfsplus
     - hfsutils
     - hfsprogs
 
@@ -24,6 +25,9 @@ before_install:
   - rm launch4j-3.12-linux-x64.tgz
 
 before_deploy:
+  - cat /proc/filesystems
+  - lsmod
+  - modprobe hfsplus
   - wget http://files.jrsoftware.org/is/5/innosetup-5.6.1.exe
   - wineboot --update
   - Xvfb :0 -screen 0 1024x768x16 &
