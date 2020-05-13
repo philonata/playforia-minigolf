@@ -1,2 +1,11 @@
 /bin/
 *.jar
+*.dmg
+*.img
+*.app
+*.exe
+tmp/
+build/
+res/localization/application.properties
+classes/
+makeexe.xml

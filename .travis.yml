@@ -2,25 +2,64 @@
 language: java
 os: linux
 dist: xenial
+install: true
+sudo: required
+
+addons:
+  apt:
+    packages:
+    #- linux-image-extra-virtual
+    - wine
+    - xvfb
+    - genisoimage
+    #- hfsplus
+    #- hfsutils
+    #- hfsprogs
 
 jdk:
   - openjdk8
 
 script: "date"
 
+before_install:
+  #- cat /proc/filesystems
+  #- lsmod
+  #- find /lib/modules/`uname -r` -type f -name "*.ko"
+  #- sudo apt-get update
+  #- sudo apt-get install -qqy --force-yes linux-image-extra-$(uname -r)
+  - wget https://netcologne.dl.sourceforge.net/project/launch4j/launch4j-3/3.12/launch4j-3.12-linux-x64.tgz
+  - tar -xf launch4j-3.12-linux-x64.tgz
+  - rm launch4j-3.12-linux-x64.tgz
+
 before_deploy:
-  - "export TITLE=testtitle"
-  - "export BODY=testbody"
-  - "zip -r tracks.zip tracks/*"
-  - "cd client ; ant compile ; cd .."
-  - "cd server ; ant compile ; cd .."
-  - "cd editor ; ant compile ; cd .."
+  - wget http://files.jrsoftware.org/is/5/innosetup-5.6.1.exe
+  - wine wineboot --update
+  - Xvfb :0 -screen 0 1024x768x16 &
+  - DISPLAY=:0.0 wine innosetup-5.6.1.exe /VERYSILENT /SUPPRESSMSGBOXES
+  - rm innosetup-5.6.1.exe
+  - wget https://github.com/ojdkbuild/ojdkbuild/releases/download/java-1.8.0-openjdk-1.8.0.252-2.b09/java-1.8.0-openjdk-jre-1.8.0.252-2.b09.ojdkbuild.windows.x86_64.zip
+  - unzip java-1.8.0-openjdk-jre-1.8.0.252-2.b09.ojdkbuild.windows.x86_64.zip
+  - mkdir client/bin/
+  - mv java-1.8.0-openjdk-jre-1.8.0.252-2.b09.ojdkbuild.windows.x86_64 client/bin/jre
+  - rm java-1.8.0-openjdk-jre-1.8.0.252-2.b09.ojdkbuild.windows.x86_64.zip
+  - wget https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u252-b09.1/OpenJDK8U-jre_x64_mac_hotspot_8u252b09.tar.gz
+  - tar -xf OpenJDK8U-jre_x64_mac_hotspot_8u252b09.tar.gz
+  - rm OpenJDK8U-jre_x64_mac_hotspot_8u252b09.tar.gz
+  - export VERSION=$(cat client/build.properties | grep "version" | cut -d'=' -f2)
+  - export TITLE="Release ${VERSION}- `date +'%Y-%m-%d'`"
+  - zip -r tracks.zip tracks/*
+  - cd client ; ant win ; wine '/home/travis/.wine/drive_c/Program Files (x86)/Inno Setup 5/iscc.exe' /DMyAppVersion=$VERSION /DMyAppExeName="Client-${VERSION}.exe" client.iss /O /F /q'Client' ; cd ..
+  - cd client ; sudo ant osx-bundled2 ; cd ..
+  - cd server ; ant compile ; cd ..
+  - cd editor ; ant compile ; cd ..
+    #- ls client
+    #- ls client/Output
 
 jobs:
   include:
     - stage: compile
       name: "Client"
-      script: "cd client ; ant compile"
+      script: "cd client ; ant jar"
     - name: "Server"
       script: "cd server ; ant compile"
     - name: "Editor"
@@ -28,14 +67,15 @@ jobs:
     - stage: release
       deploy:
         provider: releases
-        api_key: $GitHub_Token
-        #title: ${TITLE}
-        #body: ${BODY}
+        token: $GitHub_Token
+        name: $TITLE
         file:
-          - "server/server.jar"
-          - "client/client.jar"
-          - "editor/editor.jar"
-          - "tracks.zip"
+          - server/server.jar
+          - client/Output/Minigolf-Win64-Installer-$VERSION.exe
+          - client/Client-$VERSION.jar
+          - editor/editor.jar
+          - tracks.zip
+          - client/Minigolf-MacOS-Standalone-$VERSION.img
         skip_cleanup: true
         on:
           tags: true

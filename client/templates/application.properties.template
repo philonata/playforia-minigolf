@@ -1,0 +1,5 @@
+Client.application.name=@APPLICATION_NAME@
+Client.application.version=@BUILD_VERSION@
+Client.application.buildnumber=@BUILD_NUMBER@
+Client.application.icon=@ICON_PATH@
+Client.application.copyright=@COPYRIGHT@
