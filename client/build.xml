@@ -79,14 +79,16 @@
   
   <target name="prepare" depends="clean" 
           description="Sets up application info in resources">
-		  <!-- Things the app needs to know about itself -->
-	<propertyfile file="${resource.dir}/localization/application.properties">
-		<entry key="Client.application.name" value="Client"/>
-    	<entry key="Client.application.version" value="${build.version}"/>
-    	<entry key="Client.application.buildnumber" value="${build.number}"/>
-    	<entry key="Client.application.icon" value="icons/playforia.png"/>
-    	<entry key="Client.application.copyright" value="${copyright.blurb}"/>
-    </propertyfile>
+<copy file="templates/application.properties.template" 
+	tofile="${resource.dir}/localization/application.properties">
+            <filterset>
+                <filter token="APPLICATION_NAME" value="Client"/>
+                <filter token="ICON_PATH" value="icons/playforia.png" />
+                <filter token="BUILD_VERSION" value="${build.version}"/>
+                <filter token="BUILD_NUMBER" value="${build.number}"/>
+		<filter token="COPYRIGHT" value="${copyright.blurb}"/>
+            </filterset>
+        </copy>
 	
 	<!-- Wrapper details for making a Windows exe -->
     <copy file="templates/makeexe.xml.template" 
