@@ -3,7 +3,7 @@
 #define MyAppName "Minigolf Client"
 #define MyAppPublisher "Philipp van Kempen"
 #define MyAppURL "https://github.com/PhilippvK/playforia-minigolf"
-#define MyAppExeName "client.exe"
+#define MyAppExeName "Client-0.6.5.0.exe"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
@@ -32,7 +32,7 @@ ChangesAssociations=yes
 Root: HKCR; Subkey: ".mini"; ValueType: string; ValueName: ""; ValueData: "Quelea Schedule"; Flags: uninsdeletevalue
 Root: HKCR; Subkey: "Minigolf Client"; ValueType: string; ValueName: ""; ValueData: "Quelea Schedule"; Flags: uninsdeletekey
 Root: HKCR; Subkey: "Minigolf Client\DefaultIcon"; ValueType: string; ValueName: ""; ValueData: "{app}\icons\logo.ico,0"
-Root: HKCR; Subkey: "Minigolf Client\shell\open\command"; ValueType: string; ValueName: ""; ValueData: """{app}\client.exe"" ""%1"""
+Root: HKCR; Subkey: "Minigolf Client\shell\open\command"; ValueType: string; ValueName: ""; ValueData: """{app}\Client-0.6.5.0.exe"" ""%1"""
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
@@ -49,8 +49,8 @@ Type: filesandordirs; Name: "{app}/lib"
 Type: filesandordirs; Name: "{app}/vbs"
 
 [Files]
-Source: "client.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "client.jar"; DestDir: "{app}"; Flags: ignoreversion
+Source: "Client-0.6.5.0.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "Client-0.6.5.0.jar"; DestDir: "{app}"; Flags: ignoreversion
 
 [Icons]
 Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\icons\logo.ico"
