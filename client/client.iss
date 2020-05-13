@@ -4,13 +4,14 @@
 #define MyAppName "Minigolf Client"
 #define MyAppVersion "0.6.5"
 #define MyAppPublisher "Philipp van Kempen"
-#define MyAppURL "https://github.com/PhilippvK/playforia-minigolf.git"
+#define MyAppURL "https://github.com/PhilippvK/minigolf-client"
 #define MyAppExeName "Client-0.6.5.0.exe"
 
 [Setup]
-; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
+; NOTE: The value of AppId uniquely identifies this application.
+; Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{2098AAC6-34E9-4874-97F9-5474BC3B9B3D}
+AppId={{61EA9532-388E-4EB4-9521-54C62DD2B591}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 ;AppVerName={#MyAppName} {#MyAppVersion}
@@ -20,13 +21,10 @@ AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
 DefaultDirName={pf}\{#MyAppName}
 DisableProgramGroupPage=yes
-;OutputDir=Z:\
-;OutputBaseFilename="minigolf-installer-{#MyAppVersion}"
 OutputBaseFilename=setup64
 SetupIconFile=res/icons/playforia.ico
 Compression=lzma
 SolidCompression=yes
-WizardStyle=modern
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
@@ -40,8 +38,9 @@ Source: "bin\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createall
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
-Name: "{programs}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
-Name: "{desktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
+Name: "{commonprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
+Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
 
 [Run]
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
+
