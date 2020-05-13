@@ -29,8 +29,8 @@ jobs:
       deploy:
         provider: releases
         token: $GitHub_Token
-        title: ${TITLE}
-        body: ${BODY}
+        title: $TITLE
+        release_notes: $BODY
         file:
           - "server/server.jar"
           - "client/client.jar"
