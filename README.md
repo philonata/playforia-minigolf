@@ -1,4 +1,4 @@
-# Minigolf Server/Client/Editor (Playforia) [![Build Status](https://travis-ci.org/PhilippvK/playforia-minigolf.svg?branch=master)](https://travis-ci.org/PhilippvK/playforia-minigolf)
+# Minigolf Server/Client/Editor (Playforia) [![Build Status](https://travis-ci.org/philonata/playforia-minigolf.svg?branch=master)](https://travis-ci.org/PhilippvK/playforia-minigolf)
 
 ## Screenshot
 
