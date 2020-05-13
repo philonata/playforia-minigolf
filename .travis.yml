@@ -20,12 +20,13 @@ before_install:
   - wineboot --update
   - Xvfb :0 -screen 0 1024x768x16 &
   - DISPLAY=:0.0 wine innosetup-5.6.1.exe /VERYSILENT /SUPPRESSMSGBOXES
+  - rm innosetup-5.6.1.exe
 
 before_deploy:
   - "export TITLE=testtitle"
   - "export BODY=testbody"
   - "zip -r tracks.zip tracks/*"
-  - "cd client ; ant compile ; wine '/home/travis/.wine/drive_c/Program Files (x86)/Inno Setup 5/iscc.exe' /dMyAppVersion=1.0.0 client.iss /O /F /q'Client' ; cd .."
+  - "cd client ; ant win ; wine '/home/travis/.wine/drive_c/Program Files (x86)/Inno Setup 5/iscc.exe' /dMyAppVersion=1.0.0 client.iss /O /F /q'Client' ; cd .."
   - "cd server ; ant compile ; cd .."
   - "cd editor ; ant compile ; cd .."
 
@@ -33,7 +34,7 @@ jobs:
   include:
     - stage: compile
       name: "Client"
-      script: "cd client ; ant compile"
+      script: "cd client ; ant jar"
     - name: "Server"
       script: "cd server ; ant compile"
     - name: "Editor"
