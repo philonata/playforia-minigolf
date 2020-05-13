@@ -37,14 +37,14 @@ before_deploy:
   - wget https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u252-b09.1/OpenJDK8U-jre_x64_mac_hotspot_8u252b09.tar.gz
   - tar -xf OpenJDK8U-jre_x64_mac_hotspot_8u252b09.tar.gz
   - rm OpenJDK8U-jre_x64_mac_hotspot_8u252b09.tar.gz
-  - "export TITLE='Latest Release NEW'"
-  - "zip -r tracks.zip tracks/*"
-  - "cd client ; ant jar ; ant win ; wine '/home/travis/.wine/drive_c/Program Files (x86)/Inno Setup 5/iscc.exe' /dMyAppVersion=1.0.0 client.iss /O /F /q'Client' ; cd .."
-  - "cd client ; sudo ant osx-bundled2 ; cd .."
-  - "cd server ; ant compile ; cd .."
-  - "cd editor ; ant compile ; cd .."
-  - "ls client"
-  - "ls client/Output"
+  - export TITLE="Release - `date +'%Y-%m-%d'`"
+  - zip -r tracks.zip tracks/*
+  - cd client ; ant win ; wine '/home/travis/.wine/drive_c/Program Files (x86)/Inno Setup 5/iscc.exe' /dMyAppVersion=1.0.0 client.iss /O /F /q'Client' ; cd ..
+  - cd client ; sudo ant osx-bundled2 ; cd ..
+  - cd server ; ant compile ; cd ..
+  - cd editor ; ant compile ; cd ..
+    #- ls client
+    #- ls client/Output
 
 jobs:
   include:
