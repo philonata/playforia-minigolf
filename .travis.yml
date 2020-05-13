@@ -26,13 +26,12 @@ before_install:
   - rm launch4j-3.12-linux-x64.tgz
 
 before_deploy:
-  - "export TITLE=testtitle"
-  - "export BODY=testbody"
+  - "export TITLE='Latest Release'"
+  - "export BODY='This is a Test!'"
   - "zip -r tracks.zip tracks/*"
   - "cd client ; ant jar ; ant win ; wine '/home/travis/.wine/drive_c/Program Files (x86)/Inno Setup 5/iscc.exe' /dMyAppVersion=1.0.0 client.iss /O /F /q'Client' ; cd .."
   - "cd server ; ant compile ; cd .."
   - "cd editor ; ant compile ; cd .."
-  - "ls client/Output"
 
 jobs:
   include:
@@ -52,9 +51,10 @@ jobs:
         file:
           - "server/server.jar"
           - "client/Client-0.6.5.0.exe"
+          - "client/Output/setup64.exe"
           - "client/Client-0.6.5.0.jar"
           - "editor/editor.jar"
           - "tracks.zip"
-        #skip_cleanup: true
+        skip_cleanup: true
         on:
           tags: true
