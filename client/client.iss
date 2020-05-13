@@ -20,8 +20,6 @@ AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
 DefaultDirName={pf}\{#MyAppName}
 DisableProgramGroupPage=yes
-; Remove the following line to run in administrative install mode (install for all users.)
-PrivilegesRequired=lowest
 ;OutputDir=Z:\
 ;OutputBaseFilename="minigolf-installer-{#MyAppVersion}"
 OutputBaseFilename=setup64
@@ -34,7 +32,7 @@ WizardStyle=modern
 Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Tasks]
-Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
+Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"
 
 [Files]
 Source: "Client-0.6.5.0.exe"; DestDir: "{app}"; Flags: ignoreversion
@@ -42,8 +40,8 @@ Source: "bin\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createall
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
-Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\res\icons\playforia.ico"
-Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\res\icons\playforia.ico"; Tasks: desktopicon
+Name: "{programs}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
+Name: "{desktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
 
 [Run]
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
