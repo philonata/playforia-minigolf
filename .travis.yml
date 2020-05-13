@@ -3,12 +3,14 @@ language: java
 os: linux
 dist: xenial
 install: true
+#sudo: required
 
 addons:
   apt:
     packages:
     - wine
     - xvfb
+    - hfsprogs
 
 jdk:
   - openjdk8
@@ -29,11 +31,15 @@ before_install:
   - mkdir client/bin/
   - mv java-1.8.0-openjdk-jre-1.8.0.252-2.b09.ojdkbuild.windows.x86_64 client/bin/jre
   - rm java-1.8.0-openjdk-jre-1.8.0.252-2.b09.ojdkbuild.windows.x86_64.zip
+  - wget https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u252-b09.1/OpenJDK8U-jre_x64_mac_hotspot_8u252b09.tar.gz
+  - tar -xf OpenJDK8U-jre_x64_mac_hotspot_8u252b09.tar.gz
+  - rm OpenJDK8U-jre_x64_mac_hotspot_8u252b09.tar.gz
 
 before_deploy:
   - "export TITLE='Latest Release NEW'"
   - "zip -r tracks.zip tracks/*"
   - "cd client ; ant jar ; ant win ; wine '/home/travis/.wine/drive_c/Program Files (x86)/Inno Setup 5/iscc.exe' /dMyAppVersion=1.0.0 client.iss /O /F /q'Client' ; cd .."
+  - "cd client ; sudo ant osx-bundled2 ; cd .."
   - "cd server ; ant compile ; cd .."
   - "cd editor ; ant compile ; cd .."
   - "ls client"
@@ -60,6 +66,7 @@ jobs:
           - "client/Client-0.6.5.0.jar"
           - "editor/editor.jar"
           - "tracks.zip"
+          - "client/minigolf_setup.dmg"
         skip_cleanup: true
         on:
           tags: true
