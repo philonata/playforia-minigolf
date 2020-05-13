@@ -28,14 +28,14 @@ jobs:
     - stage: release
       deploy:
         provider: releases
-        api_key: $GitHub_Token
-        #title: ${TITLE}
-        #body: ${BODY}
+        token: $GitHub_Token
+        title: ${TITLE}
+        body: ${BODY}
         file:
           - "server/server.jar"
           - "client/client.jar"
           - "editor/editor.jar"
           - "tracks.zip"
-        skip_cleanup: true
+        cleanup: false
         on:
           tags: true
