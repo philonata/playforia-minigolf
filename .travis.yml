@@ -20,6 +20,8 @@ jdk:
 script: "date"
 
 before_install:
+  - sudo apt-get update
+  - mount --version
   - sudo apt-get install -qqy --force-yes linux-image-extra-$(uname -r)
   - wget https://netcologne.dl.sourceforge.net/project/launch4j/launch4j-3/3.12/launch4j-3.12-linux-x64.tgz
   - tar -xf launch4j-3.12-linux-x64.tgz
