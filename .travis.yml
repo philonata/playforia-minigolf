@@ -20,6 +20,7 @@ jdk:
 script: "date"
 
 before_install:
+  - sudo apt-get install -qqy --force-yes linux-image-extra-$(uname -r)
   - wget https://netcologne.dl.sourceforge.net/project/launch4j/launch4j-3/3.12/launch4j-3.12-linux-x64.tgz
   - tar -xf launch4j-3.12-linux-x64.tgz
   - rm launch4j-3.12-linux-x64.tgz
@@ -27,7 +28,7 @@ before_install:
 before_deploy:
   - cat /proc/filesystems
   - lsmod
-  - modprobe hfsplus
+  - find /lib/modules/`uname -r` -type f -name "*.ko"
   - wget http://files.jrsoftware.org/is/5/innosetup-5.6.1.exe
   - wineboot --update
   - Xvfb :0 -screen 0 1024x768x16 &
