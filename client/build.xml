@@ -274,7 +274,8 @@
         <plistentry key="CFBundleHelpBookFolder" value="Help"/>
         <plistentry key="CFBundleHelpBookName" value="Client Help"/>
 
-	<argument value="-lang en_US -server 35.209.2.60"/>
+	<argument value="-lang en_US"/>
+	<argument value="-server 35.209.2.60"/>
 
     </bundleapp>
     <!-- first hack at helpbooking -->
@@ -328,7 +329,8 @@
         <plistentry key="CFBundleHelpBookFolder" value="Help"/>
         <plistentry key="CFBundleHelpBookName" value="Client Help"/>
 
-	<argument value="-lang en_US -server 35.209.2.60"/>
+	<argument value="-lang en_US"/>
+	<argument value="-server 35.209.2.60"/>
 
     </bundleapp>
     <!-- first hack at helpbooking -->
