@@ -1,5 +1,13 @@
 # Minigolf Server/Client/Editor (Playforia) [![Build Status](https://travis-ci.org/PhilippvK/playforia-minigolf.svg?branch=master)](https://travis-ci.org/PhilippvK/playforia-minigolf)
 
+## UPDATE
+
+Prebuild Standalone Clients are coming soon. There will be Standalone Installers (no Java installation required anymore) for Windows (64 Bit) ans MacOS.
+
+Check out the [Releases](https://github.com/PhilippvK/playforia-minigolf/releases) in a few days! 
+
+For benchmarking resons, a very low spec game server is currently hosting the minigolf server application. You can try it out using the IP `35.209.2.60` and leave some feedback on how the experience was. I apologize for any downtimes, as I can not check it very often.
+
 ## Screenshot
 
 ![Original Playforia Minigolf Main Menu](screenshot.png)
@@ -88,6 +96,12 @@ Untested: (Will likely be compatible, too!)
 3. Also, I do not intent to extend the current codebase very much.
 4. The Java code you will find in the repository is pretty bad. Some parts even look like they where generated, for example by an converter tool
 5. There is actually an aimbot implemented in the client code. Look for `allowCheating` in `GameCanvas.java` for trying it out. Use it wisely.
+
+## Contributors
+
+- [@PhilippvK](https://github.com/PhilippvK) (BuyMeACoffe: https://www.buymeacoff.ee/PhilippvK)
+- [@maitovelkkis](https://github.com/maitovelkkis)
+- [@eYeWoRRy](https://github.com/eYeWoRRy)
 
 ---
 
