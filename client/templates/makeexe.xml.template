@@ -24,7 +24,7 @@
     <fileVersion>@VERSION@</fileVersion>
     <txtFileVersion>v.@VERSION@</txtFileVersion>
     <fileDescription>Software for Content Analysis</fileDescription>
-    <copyright>Will Lowe 2006-2012 (GPL license)</copyright>
+    <copyright>@COPYRIGHT@</copyright>
     <productVersion>@VERSION@</productVersion>
     <txtProductVersion>@APP_NAME@</txtProductVersion>
     <productName>@APP_NAME@</productName>

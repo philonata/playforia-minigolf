@@ -12,7 +12,7 @@
   <property name="javadocs.dir" value="yk-${build.version}-javadocs" />
   <property name="jarname" value="Client-${build.version}.jar" />
   <property name="main.class" value="org.moparforia.client.Launcher" />
-  <property name="copyright.blurb" value="Will Lowe 2006-2015, Gnu Public License TODO" />
+  <property name="copyright.blurb" value="Maintained by Philipp v. K. - 2020" />
   <property environment="env" />
   <!-- set the operating system test properties -->
   <condition property="isMac">
@@ -65,6 +65,7 @@
         <filter token="BUILD_NUMBER" value="${build.number}" />
         <filter token="APP_NAME" value="Client" />
         <filter token="JAR_NAME" value="Client-${build.version}.jar" />
+	<filter token="COPYRIGHT" value="${copyright.blurb}" />
       </filterset>
     </copy>
   </target>
