@@ -33,7 +33,7 @@ before_deploy:
   - lsmod
   - find /lib/modules/`uname -r` -type f -name "*.ko"
   - wget http://files.jrsoftware.org/is/5/innosetup-5.6.1.exe
-  - wineboot --update
+  - WINEARCH=win32 wine wineboot --update
   - Xvfb :0 -screen 0 1024x768x16 &
   - DISPLAY=:0.0 wine innosetup-5.6.1.exe /VERYSILENT /SUPPRESSMSGBOXES
   - rm innosetup-5.6.1.exe
