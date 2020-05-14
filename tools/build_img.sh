@@ -1,7 +1,8 @@
 #~/bin/bash
+VERSION=$1
 which genisoimage || echo "Install genisoimage first!"
-rm -f minigolf_setup.img
+rm -f "Minigolf-MacOS-Standalone-${VERSION}.img"
 mkdir -p /tmp/disk
 rm -rf /tmp/disk/*
-cp -r Client.app/ /tmp/disk/Client.app
-genisoimage -o minigolf_setup.img -D -r -l -ldots -V "Installer" /tmp/disk
+cp -r Minigolf.app/ /tmp/disk/Minigolf.app
+genisoimage -o Minigolf-MacOS-Standalone-$VERSION.img -D -r -l -ldots -V "Minigolf Client ${VERSION}" /tmp/disk
