@@ -186,9 +186,9 @@
     <bundleapp 
         jvmrequired="1.8"
         outputdirectory="."
-        name="Client"
-        displayname="Minigolf"
-        executableName="Minigolf Client"
+        name="Minigolf"
+        displayname="Minigolf Client"
+        executableName="Client"
         identifier="${main.class}"
         shortversion="${build.version}"
         version="${build.version}"
