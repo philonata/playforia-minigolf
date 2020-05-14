@@ -1,20 +1,20 @@
 ---
 language: java
 os: linux
-dist: bionic
+dist: xenial
 install: true
 sudo: required
 
 addons:
   apt:
     packages:
-    - linux-image-extra-virtual
-    - wine-stable
-    - wine32
+    #- linux-image-extra-virtual
+    - wine
     - xvfb
-    - hfsplus
-    - hfsutils
-    - hfsprogs
+    - genisoimage
+    #- hfsplus
+    #- hfsutils
+    #- hfsprogs
 
 jdk:
   - openjdk8
@@ -22,21 +22,20 @@ jdk:
 script: "date"
 
 before_install:
-  - cat /proc/filesystems
-  - lsmod
-  - find /lib/modules/`uname -r` -type f -name "*.ko"
-    #- sudo apt-get update
-  - mount --version
-    #- sudo apt-get install -qqy --force-yes linux-image-extra-$(uname -r)
+  #- cat /proc/filesystems
+  #- lsmod
+  #- find /lib/modules/`uname -r` -type f -name "*.ko"
+  #- sudo apt-get update
+  #- sudo apt-get install -qqy --force-yes linux-image-extra-$(uname -r)
   - wget https://netcologne.dl.sourceforge.net/project/launch4j/launch4j-3/3.12/launch4j-3.12-linux-x64.tgz
   - tar -xf launch4j-3.12-linux-x64.tgz
   - rm launch4j-3.12-linux-x64.tgz
 
 before_deploy:
   - wget http://files.jrsoftware.org/is/5/innosetup-5.6.1.exe
-  - WINEARCH=win32 wine wineboot --update
+  - wine wineboot --update
   - Xvfb :0 -screen 0 1024x768x16 &
-  - DISPLAY=:0.0 WINEARCH=win32 wine innosetup-5.6.1.exe /VERYSILENT /SUPPRESSMSGBOXES
+  - DISPLAY=:0.0 wine innosetup-5.6.1.exe /VERYSILENT /SUPPRESSMSGBOXES
   - rm innosetup-5.6.1.exe
   - wget https://github.com/ojdkbuild/ojdkbuild/releases/download/java-1.8.0-openjdk-1.8.0.252-2.b09/java-1.8.0-openjdk-jre-1.8.0.252-2.b09.ojdkbuild.windows.x86_64.zip
   - unzip java-1.8.0-openjdk-jre-1.8.0.252-2.b09.ojdkbuild.windows.x86_64.zip
@@ -76,7 +75,7 @@ jobs:
           - "client/Client-0.6.5.0.jar"
           - "editor/editor.jar"
           - "tracks.zip"
-          - "client/minigolf_setup.dmg"
+          - "client/minigolf_setup.img"
         skip_cleanup: true
         on:
           tags: true

@@ -1,6 +1,7 @@
 /bin/
 *.jar
 *.dmg
+*.img
 *.app
 *.exe
 tmp/

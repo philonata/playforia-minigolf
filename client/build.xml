@@ -234,7 +234,8 @@
         <plistentry key="CFBundleHelpBookFolder" value="Help"/>
 	<plistentry key="CFBundleHelpBookName" value="Client Help"/>
 
-	<argument value="-lang en_US -server 35.209.2.60"/>
+	<argument value="-lang en_US"/>
+	<argument value="-server 35.209.2.60"/>
 
     </bundleapp>
 	
@@ -306,7 +307,7 @@
 
 	<!-- make a disk image -->
 	<exec executable="/bin/bash">
-        <arg value="build_dmg.sh"/>
+        <arg value="build_img.sh"/>
         </exec>
   </target>
 
@@ -419,7 +420,7 @@
 
 	<!-- make a disk image -->
 	<exec executable="/bin/bash">
-        <arg value="build_dmg.sh"/>
+        <arg value="build_img.sh"/>
         </exec>
   </target>
 
