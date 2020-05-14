@@ -187,7 +187,8 @@
     <copy file="${resource.dir}/libHelpBookJNI.jnilib" todir="Minigolf.app/Contents/Java/" />
     <!-- make a disk image -->
     <exec executable="/bin/bash">
-	    <arg value="${tools.dir}/build_img.sh ${build.version}" />
+	    <arg value="${tools.dir}/build_img.sh" />
+	    <arg value="${build.version}" />
     </exec>
   </target>
   <target name="osx" depends="jar" if="isMac">
@@ -248,7 +249,8 @@
     <copy file="${resource.dir}/libHelpBookJNI.jnilib" todir="Minigolf.app/Contents/Java/" />
     <!-- make a disk image -->
     <exec executable="/bin/bash">
-	    <arg value="${tools.dir}/build_img.sh ${build.version}" />
+	    <arg value="${tools.dir}/build_img.sh" />
+	    <arg value="${build.version}" />
     </exec>
   </target>
   <target name="dist" depends="osx,osx2,win" />
