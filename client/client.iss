@@ -33,7 +33,7 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"
 
 [Files]
-Source: "Client-0.6.5.0.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
 Source: "bin\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
