@@ -17,6 +17,8 @@
             value="res"/>
   <property name="build.dir" 
             value="build"/>
+  <property name="tools.dir" 
+	  value="../tools"/>
   
   <property name="userdocs.dir" 
             value="onlinehelp"/>
@@ -307,7 +309,7 @@
 
 	<!-- make a disk image -->
 	<exec executable="/bin/bash">
-        <arg value="build_img.sh"/>
+		<arg value="${tools.dir}/build_img.sh"/>
         </exec>
   </target>
 
@@ -420,7 +422,7 @@
 
 	<!-- make a disk image -->
 	<exec executable="/bin/bash">
-        <arg value="build_img.sh"/>
+		<arg value="${tools.dir}/build_img.sh"/>
         </exec>
   </target>
 
