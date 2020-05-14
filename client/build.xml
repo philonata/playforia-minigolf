@@ -44,7 +44,7 @@
     <delete file="${resource.dir}/localization/application.properties" />
     <delete file="Client-${build.version}.jar" />
     <delete file="Client-${build.version}.dmg" />
-    <delete dir="Client.app" />
+    <delete dir="Minigolf.app" />
     <delete file="Client-${build.version}.exe" />
     <delete file="makeexe.xml" />
   </target>
@@ -127,7 +127,7 @@
     <launch4j configFile="makeexe.xml" fileVersion="${build.version}" txtFileVersion="${build.version}" productVersion="${build.version}" />
   </target>
   <target name="osx-bundled" depends="jar" if="isMac">
-    <bundleapp jvmrequired="1.8" outputdirectory="." name="Client" displayname="Client" executableName="Client" identifier="${main.class}" shortversion="${build.version}" version="${build.version}" icon="res/icons/appicon.icns" mainclassname="${main.class}" copyright="${copyright.blurb}">
+	  <bundleapp jvmrequired="1.8" outputdirectory="." name="Minigolf" displayname="Minigolf Client" executableName="Client" identifier="${main.class}" shortversion="${build.version}" version="${build.version}" icon="res/icons/appicon.icns" mainclassname="${main.class}" copyright="${copyright.blurb}">
       <runtime dir="${env.JAVA_HOME}" />
       <classpath file="Client-${build.version}.jar" />
       <arch name="x86_64" />
@@ -148,20 +148,20 @@
       <argument value="-server 35.209.2.60" />
     </bundleapp>
     <!-- first hack at helpbooking -->
-    <copy todir="Client.app/Contents/Resources/Help/">
+    <copy todir="Minigolf.app/Contents/Resources/Help/">
       <fileset dir="onlinehelp" includes="**/*" />
     </copy>
-    <copy file="${resource.dir}/libHelpBookJNI.jnilib" todir="Client.app/Contents/Java/" />
+    <copy file="${resource.dir}/libHelpBookJNI.jnilib" todir="Minigolf.app/Contents/Java/" />
     <!-- make a disk image -->
     <exec executable="hdiutil">
       <arg value="create" />
       <arg value="-srcfolder" />
-      <arg value="Client.app" />
+      <arg value="Minigolf.app" />
       <arg value="Client-${build.version}-bundled.dmg" />
     </exec>
   </target>
   <target name="osx-bundled2" depends="jar" if="isUnix">
-    <bundleapp jvmrequired="1.8" outputdirectory="." name="Client" displayname="Client" executableName="Client" identifier="${main.class}" shortversion="${build.version}" version="${build.version}" icon="res/icons/appicon.icns" mainclassname="${main.class}" copyright="${copyright.blurb}">
+    <bundleapp jvmrequired="1.8" outputdirectory="." name="Minigolf" displayname="Minigolf Client" executableName="Client" identifier="${main.class}" shortversion="${build.version}" version="${build.version}" icon="res/icons/appicon.icns" mainclassname="${main.class}" copyright="${copyright.blurb}">
       <runtime dir="../jdk8u252-b09-jre/Contents/Home/" />
       <classpath file="Client-${build.version}.jar" />
       <arch name="x86_64" />
@@ -181,17 +181,17 @@
       <argument value="-lang en_US -server 35.209.2.60" />
     </bundleapp>
     <!-- first hack at helpbooking -->
-    <copy todir="Client.app/Contents/Resources/Help/">
+    <copy todir="Minigolf.app/Contents/Resources/Help/">
       <fileset dir="onlinehelp" includes="**/*" />
     </copy>
-    <copy file="${resource.dir}/libHelpBookJNI.jnilib" todir="Client.app/Contents/Java/" />
+    <copy file="${resource.dir}/libHelpBookJNI.jnilib" todir="Minigolf.app/Contents/Java/" />
     <!-- make a disk image -->
     <exec executable="/bin/bash">
-      <arg value="${tools.dir}/build_img.sh" />
+	    <arg value="${tools.dir}/build_img.sh ${build.version}" />
     </exec>
   </target>
   <target name="osx" depends="jar" if="isMac">
-    <bundleapp jvmrequired="1.8" outputdirectory="." name="Client" displayname="Client" executableName="Client" identifier="${main.class}" shortversion="${build.version}" version="${build.version}" icon="res/icons/appicon.icns" mainclassname="${main.class}" copyright="${copyright.blurb}">
+    <bundleapp jvmrequired="1.8" outputdirectory="." name="Minigolf" displayname="Minigolf Client" executableName="Client" identifier="${main.class}" shortversion="${build.version}" version="${build.version}" icon="res/icons/appicon.icns" mainclassname="${main.class}" copyright="${copyright.blurb}">
       <classpath file="Client-${build.version}.jar" />
       <arch name="x86_64" />
       <bundledocument extensions="ykp" icon="res/icons/appicon-project.icns" name="Client Project" role="editor" />
@@ -210,20 +210,20 @@
       <argument value="-lang en_US -server 35.209.2.60" />
     </bundleapp>
     <!-- first hack at helpbooking -->
-    <copy todir="Client.app/Contents/Resources/Help/">
+    <copy todir="Minigolf.app/Contents/Resources/Help/">
       <fileset dir="onlinehelp" includes="**/*" />
     </copy>
-    <copy file="${resource.dir}/libHelpBookJNI.jnilib" todir="Client.app/Contents/Java/" />
+    <copy file="${resource.dir}/libHelpBookJNI.jnilib" todir="Minigolf.app/Contents/Java/" />
     <!-- make a disk image -->
     <exec executable="hdiutil" if="isMac">
       <arg value="create" />
       <arg value="-srcfolder" />
-      <arg value="Client.app" />
-      <arg value="Client-${build.version}.dmg" />
+      <arg value="Minigolf.app" />
+      <arg value="Minigolf-MacOS-Standalone-${build.version}.dmg" />
     </exec>
   </target>
   <target name="osx2" depends="jar" if="isUnix">
-    <bundleapp jvmrequired="1.8" outputdirectory="." name="Client" displayname="Client" executableName="Client" identifier="${main.class}" shortversion="${build.version}" version="${build.version}" icon="res/icons/appicon.icns" mainclassname="${main.class}" copyright="${copyright.blurb}">
+    <bundleapp jvmrequired="1.8" outputdirectory="." name="Minigolf" displayname="Minigolf Client" executableName="Client" identifier="${main.class}" shortversion="${build.version}" version="${build.version}" icon="res/icons/appicon.icns" mainclassname="${main.class}" copyright="${copyright.blurb}">
       <classpath file="Client-${build.version}.jar" />
       <arch name="x86_64" />
       <bundledocument extensions="ykp" icon="res/icons/appicon-project.icns" name="Client Project" role="editor" />
@@ -242,13 +242,13 @@
       <argument value="-lang en_US -server 35.209.2.60" />
     </bundleapp>
     <!-- first hack at helpbooking -->
-    <copy todir="Client.app/Contents/Resources/Help/">
+    <copy todir="Minigolf.app/Contents/Resources/Help/">
       <fileset dir="onlinehelp" includes="**/*" />
     </copy>
-    <copy file="${resource.dir}/libHelpBookJNI.jnilib" todir="Client.app/Contents/Java/" />
+    <copy file="${resource.dir}/libHelpBookJNI.jnilib" todir="Minigolf.app/Contents/Java/" />
     <!-- make a disk image -->
     <exec executable="/bin/bash">
-      <arg value="${tools.dir}/build_img.sh" />
+	    <arg value="${tools.dir}/build_img.sh ${build.version}" />
     </exec>
   </target>
   <target name="dist" depends="osx,osx2,win" />
