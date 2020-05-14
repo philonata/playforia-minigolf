@@ -70,12 +70,12 @@ jobs:
         token: $GitHub_Token
         name: $TITLE
         file:
-          - "server/server.jar"
-          - "client/Output/Minigolf-Win64-Installer-${VERSION}.exe"
-          - "client/Client-${VERSION}.jar"
-          - "editor/editor.jar"
-          - "tracks.zip"
-          - "client/Minigolf-MacOS-Standalone-${VERS}.img"
+          - server/server.jar
+          - client/Output/Minigolf-Win64-Installer-$VERSION.exe
+          - client/Client-$VERSION.jar
+          - editor/editor.jar
+          - tracks.zip
+          - client/Minigolf-MacOS-Standalone-${VERS.img
         skip_cleanup: true
         on:
           tags: true
