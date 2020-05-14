@@ -124,7 +124,7 @@
     <move file="../yk-${build.version}-source.zip" todir="${dir}" />
   </target>
   <target name="win" depends="jar" description="Run launch4j on the config file to create Windows exe">
-    <launch4j configFile="makeexe.xml" fileVersion="${build.version}" txtFileVersion="${build.version}" productVersion="${build.version}" />
+    <launch4j configFile="makeexe.xml" fileVersion="${build.version}.0" txtFileVersion="${build.version}.0" productVersion="${build.version}.0" />
   </target>
   <target name="osx-bundled" depends="jar" if="isMac">
 	  <bundleapp jvmrequired="1.8" outputdirectory="." name="Minigolf" displayname="Minigolf Client" executableName="Client" identifier="${main.class}" shortversion="${build.version}" version="${build.version}" icon="res/icons/appicon.icns" mainclassname="${main.class}" copyright="${copyright.blurb}">
