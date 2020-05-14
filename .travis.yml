@@ -75,7 +75,7 @@ jobs:
           - client/Client-$VERSION.jar
           - editor/editor.jar
           - tracks.zip
-          - client/Minigolf-MacOS-Standalone-${VERS.img
+          - client/Minigolf-MacOS-Standalone-$VERSION.img
         skip_cleanup: true
         on:
           tags: true
