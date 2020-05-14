@@ -2,10 +2,10 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Minigolf Client"
-#define MyAppVersion "0.6.5"
+;#define MyAppVersion "0.6.5"
 #define MyAppPublisher "Philipp van Kempen"
 #define MyAppURL "https://github.com/PhilippvK/minigolf-client"
-#define MyAppExeName "Client-0.6.5.0.exe"
+;#define MyAppExeName "Client-0.6.5.0.exe"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
