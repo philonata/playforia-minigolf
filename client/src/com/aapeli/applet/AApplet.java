@@ -72,7 +72,7 @@ public abstract class AApplet extends Applet implements Runnable, ActionListener
     private Connection connection;
     private Image appletImage;
     private Graphics appletGraphics;
-
+    private boolean verbose;
 
     public void init() {
         System.out.println("\n" + this.getAppletInfo() + "\n");
@@ -89,6 +89,7 @@ public abstract class AApplet extends Applet implements Runnable, ActionListener
         this.aBoolean2557 = false;
         this.aBoolean2555 = true;
         this.destroyed = false;
+        this.verbose = false;
     }
 
     public void start() {
@@ -296,6 +297,7 @@ public abstract class AApplet extends Applet implements Runnable, ActionListener
         this.loadingPanel.method463();
         this.param = new Parameters(this, this.isDebug());
         String var3 = this.param.getParameter("initmessage");
+        this.verbose = Boolean.parseBoolean(this.param.getParameter("verbose"));
         if (var3 != null && var3.indexOf(124) == -1) {
             this.loadingPanel.setLoadingMessage(var3);
         }

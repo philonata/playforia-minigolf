@@ -32,6 +32,7 @@ public class GameApplet extends AApplet {
     private boolean disableGuestChat;
     private boolean aBoolean3773;
     private Image anImage3774;
+    private boolean verbose = false;
 
 
     public void initApplet(Parameters var1) {
@@ -104,7 +105,7 @@ public class GameApplet extends AApplet {
     }
 
     public boolean isDebug() {
-        return true;
+        return verbose;
     }
 
     protected int method32() {
@@ -133,7 +134,7 @@ public class GameApplet extends AApplet {
                 } else {
                     this.aBoolean3773 = true;
                 }
-                System.out.println(hasSession() + " " + gameContainer.synchronizedTrackTestMode.get());
+                //System.out.println(hasSession() + " " + gameContainer.synchronizedTrackTestMode.get());
 
                 if (Launcher.isUsingCustomServer()) {
                     TrackTestLoginPanel var4 = new TrackTestLoginPanel(this, super.appletWidth, super.appletHeight);

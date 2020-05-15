@@ -25,9 +25,10 @@ public class Launcher extends JFrame {
     private Map<String, Game> gaemz;
     private String selectedGame;
     private JCheckBox serverBox;
+    private static boolean verbose = false;
 
     public static boolean debug() {
-        return true;
+        return verbose;
     }
 
     public static boolean isUsingCustomServer() {
@@ -81,9 +82,14 @@ public class Launcher extends JFrame {
 			for(int i = 0;i<args.length ; i++){
 				if(args[i].equals("-server") && args.length>i+1){//finds -server launch option and checks that there is actually something after it
 					server = args[i+1]; //grabs the next string after -server
+          i++;
 				}
 				if(args[i].equals("-lang") && args.length>i+1){//finds -lang launch option and checks that there is actually something after it
 					lang = args[i+1]; //grabs the next string after -lang
+          i++;
+				}
+				if(args[i].equals("-verbose")){//finds -lang launch option and checks that there is actually something after it
+          verbose = true;
 				}
 			}
 			
@@ -338,30 +344,46 @@ public class Launcher extends JFrame {
                         break;
                     }
                 serverBox = new JCheckBox("Use localhost");
+                System.out.println("HUHUHUHUH");
                 ((JPanel) parent).add(serverBox);
             }
         }
     }
 
     public Launcher(String server, String lang) {
-        gaemz = new TreeMap<String, Game>();
-        gaemz.put("AGolf", new Game(server, 4242, 735, 525));
 
-        serverBox = new JCheckBox();
-        serverBox.setSelected(true);
-        selectedGame = "AGolf";
+        JPanel pane = new JPanel();
+        final JTextField serverField = new JTextField();
+        JLabel serverLabel = new JLabel("Hostname:");
+        serverField.setText(server);
+
+        pane.setLayout(new GridLayout(2, 1));
+        pane.add(serverLabel);
+        pane.add(serverField);
+        int option = JOptionPane.showConfirmDialog(this,pane,"Choose a server",JOptionPane.OK_CANCEL_OPTION);
+        if(option == JOptionPane.OK_OPTION) {
+            server = serverField.getText();
+
+            gaemz = new TreeMap<String, Game>();
+            gaemz.put("AGolf", new Game(server, 4242, 735, 525));
+
+            selectedGame = "AGolf";
             game = new AGolf();
 
 
-        game.setStub(new Stub(server,lang));
-        game.setSize(gaemz.get(selectedGame).width, gaemz.get(selectedGame).height);
-        game.init();
-        game.start();
-        add(game);
-        setSize(gaemz.get(selectedGame).width + 20, gaemz.get(selectedGame).height + 40);
-        setResizable(true);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setVisible(true);
+            game.setStub(new Stub(server,lang,verbose));
+            game.setSize(gaemz.get(selectedGame).width, gaemz.get(selectedGame).height);
+            game.init();
+            game.start();
+            add(game);
+            setSize(gaemz.get(selectedGame).width + 20, gaemz.get(selectedGame).height + 40);
+            setResizable(true);
+            setDefaultCloseOperation(EXIT_ON_CLOSE);
+            setVisible(true);
+        } else {
+
+        }
+
     }
 
     private String[] login() {
@@ -391,17 +413,17 @@ public class Launcher extends JFrame {
     class Stub implements AppletStub {
         private Map<String, String> params;
 
-        public Stub(String server,String lang) {
+        public Stub(String server,String lang, boolean verbose) {
             Game g = gaemz.get(selectedGame);
             params = new HashMap<String, String>();
             params.put("initmessage", "Loading game...");
             params.put("ld_page", "javascript:Playray.Notify.delegate({ jvm: { version: '%v', vendor: '%w', t1: '%r', t2: '%f' } })");
             params.put("image", "/appletloader_playforia.gif");
-            if(serverBox.isSelected()) {
+            /*if(serverBox.isSelected()) {
                 params.put("server", "149.255.111.161" + ":" + g.port);
             } else {
                 params.put("server", "game05.playforia.net" + ":" + g.port);
-            }
+            }*/
             params.put("server", server + ":" + g.port);
             //params.put("server", "192.168.1.23:" + g.port);
 
@@ -425,6 +447,7 @@ public class Launcher extends JFrame {
             params.put("java_arguments", "-Xmx128m");
             params.put("localizationUrl", "");
             params.put("sharedLocalizationUrl", "");
+            params.put("verbose", Boolean.toString(verbose));
 
             //if(serverBox.isSelected())
                 //params.put("tracktestmode", "true");
